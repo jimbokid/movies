@@ -3,7 +3,7 @@
 Best experience on mobile phone
 
 ## Demo
-[click here to look demo](https://react-pwa-d4fd9.firebaseapp.com/)
+[click here to look demo](https://react-pwa-d4fd9.web.app/)
 
 ## Public API what I'm using:
 https://api.themoviedb.org/3/
