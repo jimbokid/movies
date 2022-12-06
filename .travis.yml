@@ -1,0 +1,26 @@
+language: node_js
+node_js: "12.16.1"
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.19.0
+  - export PATH=$HOME/.yarn/bin:$PATH
+env:
+  global:
+    - REACT_APP_API_KEY=$FIREBASE_API_KEY
+    - REACT_APP_AUTH_DOMAIN=$FIREBASE_AUTH_DOMAIN
+    - REACT_APP_DATABASE_URL=$FIREBASE_DATABASE_URL
+    - REACT_APP_PROJECT_ID=$FIREBASE_PROJECT_ID
+    - REACT_APP_STORAGE_BUCKET=$FIREBASE_STORAGE_BUCKET
+    - REACT_APP_MESSAGING_SENDER_ID=$FIREBASE_MESSAGING_SENDER_ID
+cache:
+  yarn: false
+install:
+  - yarn
+before_script:
+  - yarn add firebase-tools -g
+script:
+  - yarn build
+after_script:
+  - firebase deploy --only hosting,functions --token $FIREBASE_TOKEN --project $FIREBASE_PROJECT_ID
+branches:
+  only:
+    - master
