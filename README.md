@@ -2,6 +2,8 @@
 
 I created this application to use it when I want to check something new about movies and cinema.
 
+<img src="https://res.cloudinary.com/dw9mzolpq/image/upload/v1674838754/MovieApp/IMG_6456_1.png" width="30%"></img> <img src="https://res.cloudinary.com/dw9mzolpq/image/upload/v1674838754/MovieApp/IMG_6457_1.png" width="30%"></img> <img src="https://res.cloudinary.com/dw9mzolpq/image/upload/v1674838754/MovieApp/IMG_6458_1.png" width="30%"></img> 
+
 ## Demo
 [click here to look demo](https://react-pwa-d4fd9.firebaseapp.com/)
 
