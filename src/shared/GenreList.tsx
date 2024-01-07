@@ -64,10 +64,10 @@ export const GenreList: React.FC<Props> = ({
   );
 };
 
-export default withStyles(theme => ({
+export default withStyles((theme) => ({
   chip: {
-    marginRight: theme.spacing,
-    marginBottom: theme.spacing,
+    marginRight: theme.spacing(1),
+    marginBottom: theme.spacing(1),
     height: 26,
     cursor: "pointer",
   },

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { withStyles,Theme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Layout from "../../../shared/Layout";
 import Typography from "@material-ui/core/Typography";
 import styled from "styled-components";
@@ -15,6 +15,74 @@ import { fetchDetailMovie } from "../actions/MovieDetail";
 import VideoWrapper from "./VideoWrapper";
 import { clear_state, MovieDetailState } from "../reducers/movieDetail";
 import { useAppSelector, useAppDispatch } from "../../../config/utils/hooks";
+
+const useStyles = makeStyles((theme) => ({
+  media: {
+    height: 0,
+    paddingTop: "150%",
+    background: "#949494",
+  },
+  movieInfo: {
+    background: "rgba(255,255,255,.8)",
+    padding: "16px 8px",
+  },
+  movieTitle: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    background: "rgba(255,255,255,0.8)",
+    padding: 15,
+    textAlign: "center",
+  },
+  chip: {
+    "& > *": {
+      margin: theme.spacing(0.5),
+    },
+    height: 26,
+    cursor: "pointer",
+  },
+  chipWrapper: {
+    textDecoration: "none",
+  },
+  poster: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0,
+    margin: "auto",
+    width: "100%",
+  },
+  gridList: {
+    width: "100%",
+    flexWrap: "nowrap",
+    transform: "translateZ(0)",
+  },
+  infoWrapper: {
+    paddingTop: theme.spacing,
+  },
+  button: {
+    marginTop: theme.spacing,
+    marginBottom: theme.spacing,
+  },
+  header: {
+    paddingTop: "20%",
+    [theme.breakpoints.down("md")]: {
+      paddingTop: "30%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      paddingTop: "40%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      paddingTop: "56.25%",
+    },
+  },
+}));
 
 interface StyledProps {
   backdrop_path: string;
@@ -51,7 +119,9 @@ interface Props {
   };
 }
 
-const MovieDetail: React.FC<Props> = ({ match, classes }: Props) => {
+const MovieDetail: React.FC<Props> = ({ match }: Props) => {
+  const classes = useStyles();
+
   const { id, type } = match.params;
   const movieDetail = useAppSelector(
     (state) => state.movieDetail
@@ -157,69 +227,4 @@ const MovieDetail: React.FC<Props> = ({ match, classes }: Props) => {
   );
 };
 
-export default withStyles(theme => ({
-  media: {
-    height: 0,
-    paddingTop: "150%",
-    background: "#949494",
-  },
-  movieInfo: {
-    background: "rgba(255,255,255,.8)",
-    padding: "16px 8px",
-  },
-  movieTitle: {
-    position: "absolute",
-    top: 0,
-    right: 0,
-    left: 0,
-    bottom: 0,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    background: "rgba(255,255,255,0.8)",
-    padding: 15,
-    textAlign: "center",
-  },
-  chip: {
-    marginRight: theme.spacing,
-    marginBottom: theme.spacing,
-    height: 26,
-    cursor: "pointer",
-  },
-  chipWrapper: {
-    textDecoration: "none",
-  },
-  poster: {
-    position: "absolute",
-    top: 0,
-    right: 0,
-    left: 0,
-    bottom: 0,
-    margin: "auto",
-    width: "100%",
-  },
-  gridList: {
-    width: "100%",
-    flexWrap: "nowrap",
-    transform: "translateZ(0)",
-  },
-  infoWrapper: {
-    paddingTop: theme.spacing,
-  },
-  button: {
-    marginTop: theme.spacing,
-    marginBottom: theme.spacing,
-  },
-  header: {
-    paddingTop: "20%",
-    [theme.breakpoints.down("md")]: {
-      paddingTop: "30%",
-    },
-    [theme.breakpoints.down("sm")]: {
-      paddingTop: "40%",
-    },
-    [theme.breakpoints.down("xs")]: {
-      paddingTop: "56.25%",
-    },
-  },
-}))(MovieDetail);
+export default MovieDetail;
