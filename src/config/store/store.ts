@@ -4,6 +4,7 @@ import movieDetailSlice from "../../routes/MovieDetail/reducers/movieDetail";
 import personalDetail from "../../routes/PersonalDetail/reducers/personalDetail";
 import searchDetail from "../../routes/SearchDetail/reducers/searchDetail";
 import searchSlice from "../../shared/Search/reducers/search";
+import suggestMovie from "../../routes/SuggestMovie/reducers/suggestMovie";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     personalDetail: personalDetail,
     searchDetail: searchDetail,
     search: searchSlice,
+    suggestMovie: suggestMovie
   },
 });
 

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles,Theme } from "@material-ui/core/styles";
 import Layout from "../../../shared/Layout";
 import Typography from "@material-ui/core/Typography";
 import styled from "styled-components";
@@ -14,77 +14,7 @@ import { useEffect, useState } from "react";
 import { fetchDetailMovie } from "../actions/MovieDetail";
 import VideoWrapper from "./VideoWrapper";
 import { clear_state, MovieDetailState } from "../reducers/movieDetail";
-import { createStyles } from "@material-ui/core";
 import { useAppSelector, useAppDispatch } from "../../../config/utils/hooks";
-import { Theme } from "@material-ui/core/styles/createMuiTheme";
-
-const styles = (theme: Theme) =>
-  createStyles({
-    media: {
-      height: 0,
-      paddingTop: "150%",
-      background: "#949494",
-    },
-    movieInfo: {
-      background: "rgba(255,255,255,.8)",
-      padding: "16px 8px",
-    },
-    movieTitle: {
-      position: "absolute",
-      top: 0,
-      right: 0,
-      left: 0,
-      bottom: 0,
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      background: "rgba(255,255,255,0.8)",
-      padding: 15,
-      textAlign: "center",
-    },
-    chip: {
-      marginRight: theme.spacing.unit,
-      marginBottom: theme.spacing.unit,
-      height: 26,
-      cursor: "pointer",
-    },
-    chipWrapper: {
-      textDecoration: "none",
-    },
-    poster: {
-      position: "absolute",
-      top: 0,
-      right: 0,
-      left: 0,
-      bottom: 0,
-      margin: "auto",
-      width: "100%",
-    },
-    gridList: {
-      width: "100%",
-      flexWrap: "nowrap",
-      transform: "translateZ(0)",
-    },
-    infoWrapper: {
-      paddingTop: theme.spacing.unit,
-    },
-    button: {
-      marginTop: theme.spacing.unit,
-      marginBottom: theme.spacing.unit,
-    },
-    header: {
-      paddingTop: "20%",
-      [theme.breakpoints.down("md")]: {
-        paddingTop: "30%",
-      },
-      [theme.breakpoints.down("sm")]: {
-        paddingTop: "40%",
-      },
-      [theme.breakpoints.down("xs")]: {
-        paddingTop: "56.25%",
-      },
-    },
-  });
 
 interface StyledProps {
   backdrop_path: string;
@@ -162,7 +92,7 @@ const MovieDetail: React.FC<Props> = ({ match, classes }: Props) => {
             backdrop_path={data.backdrop_path}
             className={classes?.header}
           >
-            <Typography variant="display1" className={classes?.movieTitle}>
+            <Typography className={classes?.movieTitle}>
               {data.title || data.original_name}
             </Typography>
           </StyledHeader>
@@ -203,7 +133,7 @@ const MovieDetail: React.FC<Props> = ({ match, classes }: Props) => {
               openVideo={openVideo}
               showVideoClicked={showVideoClicked}
             />
-            <Typography variant="title" gutterBottom>
+            <Typography variant="h6" gutterBottom>
               Cast:
             </Typography>
             {credits && (
@@ -214,7 +144,7 @@ const MovieDetail: React.FC<Props> = ({ match, classes }: Props) => {
                 cast={true}
               />
             )}
-            <Typography variant="title" gutterBottom>
+            <Typography variant="h6" gutterBottom>
               You can also watch:
             </Typography>
             {similar && (
@@ -227,4 +157,69 @@ const MovieDetail: React.FC<Props> = ({ match, classes }: Props) => {
   );
 };
 
-export default withStyles(styles)(MovieDetail);
+export default withStyles(theme => ({
+  media: {
+    height: 0,
+    paddingTop: "150%",
+    background: "#949494",
+  },
+  movieInfo: {
+    background: "rgba(255,255,255,.8)",
+    padding: "16px 8px",
+  },
+  movieTitle: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    background: "rgba(255,255,255,0.8)",
+    padding: 15,
+    textAlign: "center",
+  },
+  chip: {
+    marginRight: theme.spacing,
+    marginBottom: theme.spacing,
+    height: 26,
+    cursor: "pointer",
+  },
+  chipWrapper: {
+    textDecoration: "none",
+  },
+  poster: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0,
+    margin: "auto",
+    width: "100%",
+  },
+  gridList: {
+    width: "100%",
+    flexWrap: "nowrap",
+    transform: "translateZ(0)",
+  },
+  infoWrapper: {
+    paddingTop: theme.spacing,
+  },
+  button: {
+    marginTop: theme.spacing,
+    marginBottom: theme.spacing,
+  },
+  header: {
+    paddingTop: "20%",
+    [theme.breakpoints.down("md")]: {
+      paddingTop: "30%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      paddingTop: "40%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      paddingTop: "56.25%",
+    },
+  },
+}))(MovieDetail);

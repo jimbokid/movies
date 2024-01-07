@@ -52,8 +52,6 @@ const Dashboard: React.FC<Props> = ({ classes }: Props) => {
     dispatch(fetchDashboard());
   }, []);
 
-  console.log(popular.results);
-
   return (
     <Layout>
       <InfiniteScroll

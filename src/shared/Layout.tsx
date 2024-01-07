@@ -1,47 +1,44 @@
 import React, { useState } from "react";
 import Header from "./Header";
-import { withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Search from "./Search/components/Search";
-import { createStyles } from "@material-ui/core";
-import { Theme } from "@material-ui/core/styles/createMuiTheme";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    container: {
-      minHeight: "100vh",
-      display: "flex",
-      flexDirection: "column",
-      margin: -theme.spacing.unit,
-      "& *": {
-        boxSizing: "border-box",
-      },
+const useStyles = makeStyles((theme) => ({
+  container: {
+    minHeight: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    margin: -theme.spacing,
+    "& *": {
+      boxSizing: "border-box",
     },
-    content: {
-      flex: "1 0 auto",
-    },
-    contentInner: {
-      maxWidth: theme.breakpoints.values.lg,
-      margin: "0 auto",
-      padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit}px`,
-      position: "relative",
-    },
-    searchWrapperBox: {
-      maxWidth: theme.breakpoints.values.lg,
-      position: "relative",
-      margin: "0 auto",
-    },
-    searchWrapper: {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      right: 0,
-      zIndex: 100,
-      background: "#fff",
-      paddingTop: theme.spacing.unit,
-      paddingLeft: theme.spacing.unit,
-      paddingRight: theme.spacing.unit,
-    },
-  });
+  },
+  content: {
+    flex: "1 0 auto",
+  },
+  contentInner: {
+    maxWidth: theme.breakpoints.values.lg,
+    margin: "0 auto",
+    padding: `${theme.spacing(2)}px ${theme.spacing}px`,
+    position: "relative",
+  },
+  searchWrapperBox: {
+    maxWidth: theme.breakpoints.values.lg,
+    position: "relative",
+    margin: "0 auto",
+  },
+  searchWrapper: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 100,
+    background: "#fff",
+    paddingTop: theme.spacing,
+    paddingLeft: theme.spacing,
+    paddingRight: theme.spacing,
+  },
+}));
 
 interface Props {
   id?: string;
@@ -55,8 +52,12 @@ interface Props {
   };
 }
 
-export const Layout: React.FC<Props> = ({ classes, children }: Props) => {
+export const Layout: React.FC<Props> = ({ children }: Props) => {
+  const classes = useStyles();
+
   const [openSearch, setOpenSearch] = useState<boolean>(false);
+
+  console.log(classes);
 
   return (
     <div className={classes?.container}>
@@ -85,4 +86,4 @@ export const Layout: React.FC<Props> = ({ classes, children }: Props) => {
   );
 };
 
-export default withStyles(styles)(Layout);
+export default Layout;

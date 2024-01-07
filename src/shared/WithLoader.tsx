@@ -1,7 +1,7 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { Theme } from "@material-ui/core/styles/createMuiTheme";
+import { Theme } from "@material-ui/core/styles";
 import { createStyles } from "@material-ui/core";
 
 const styles = (theme: Theme) =>
@@ -14,9 +14,9 @@ const styles = (theme: Theme) =>
     },
     loaderContainer: {
       position: "absolute",
-      left: -theme.spacing.unit,
-      top: -theme.spacing.unit * 2,
-      right: -theme.spacing.unit,
+      left: -theme.spacing,
+      top: -theme.spacing * 2,
+      right: -theme.spacing,
       bottom: 0,
       backgroundColor: "rgba(255,255,255,.5)",
       zIndex: 2,

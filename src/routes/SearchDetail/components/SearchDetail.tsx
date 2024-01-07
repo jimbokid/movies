@@ -13,44 +13,6 @@ import {
 } from "../actions/SearchDetail";
 import { clear_state, SearchDetailState } from "../reducers/searchDetail";
 import { useAppDispatch, useAppSelector } from "../../../config/utils/hooks";
-import { createStyles } from "@material-ui/core";
-import { Theme } from "@material-ui/core/styles/createMuiTheme";
-
-const styles = (theme: Theme) =>
-  createStyles({
-    image: {
-      width: "100%",
-      height: "100%",
-      position: "absolute",
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
-    },
-    controls: {
-      display: "flex",
-      alignItems: "center",
-      paddingLeft: theme.spacing.unit,
-      paddingBottom: theme.spacing.unit,
-    },
-    playIcon: {
-      height: 38,
-      width: 38,
-    },
-    avatar: {
-      color: "#fff",
-      backgroundColor: deepOrange[500],
-      fontSize: 14,
-    },
-    icon: {
-      position: "absolute",
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
-      margin: "auto",
-    },
-  });
 
 export interface SearchDetailClasses {
   image: string;
@@ -126,7 +88,7 @@ const SearchDetail: React.FC<Props> = ({ classes, match }: Props) => {
   return (
     <Layout>
       {title.length > 0 && (
-        <Typography variant="title" gutterBottom>
+        <Typography variant="h6" gutterBottom>
           {title}
         </Typography>
       )}
@@ -151,7 +113,7 @@ const SearchDetail: React.FC<Props> = ({ classes, match }: Props) => {
 
       {tv && tv.results.length > 0 && (
         <div>
-          <Typography variant="title" gutterBottom>
+          <Typography variant="h6" gutterBottom>
             Tv show
           </Typography>
           {tv &&
@@ -171,7 +133,7 @@ const SearchDetail: React.FC<Props> = ({ classes, match }: Props) => {
 
       {person && person.results.length > 0 && (
         <div id="personWrapper">
-          <Typography variant="title" gutterBottom>
+          <Typography variant="h6" gutterBottom>
             Person
           </Typography>
           {person &&
@@ -192,4 +154,37 @@ const SearchDetail: React.FC<Props> = ({ classes, match }: Props) => {
   );
 };
 
-export default withStyles(styles)(SearchDetail);
+export default withStyles(theme => ({
+  image: {
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+  },
+  controls: {
+    display: "flex",
+    alignItems: "center",
+    paddingLeft: theme.spacing,
+    paddingBottom: theme.spacing,
+  },
+  playIcon: {
+    height: 38,
+    width: 38,
+  },
+  avatar: {
+    color: "#fff",
+    backgroundColor: deepOrange[500],
+    fontSize: 14,
+  },
+  icon: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    margin: "auto",
+  },
+}))(SearchDetail);

@@ -9,45 +9,7 @@ import moment from "moment/moment";
 import Avatar from "@material-ui/core/Avatar";
 import { fetchSearch } from "../actions/Search";
 import { clear_state, SearchState } from "../reducers/search";
-import { createStyles } from "@material-ui/core";
 import { useAppDispatch, useAppSelector } from "../../../config/utils/hooks";
-import { Theme } from "@material-ui/core/styles/createMuiTheme";
-
-const styles = (theme: Theme) =>
-  createStyles({
-    textField: {
-      width: "100%",
-      marginTop: 0,
-    },
-    clearBtn: {
-      position: "absolute",
-      top: 0,
-      right: 0,
-      zIndex: 1,
-    },
-    dropdownWrapper: {
-      position: "relative",
-      zIndex: 1,
-    },
-    dropdownInner: {
-      width: "100%",
-      background: "#fff",
-      maxHeight: "calc(100vh - 56px)",
-      overflowY: "scroll",
-    },
-    avatar: {
-      fontSize: 12,
-      marginRight: theme.spacing.unit,
-    },
-    item: {
-      textDecoration: "none",
-    },
-    menuItem: {
-      height: "auto",
-      paddingLeft: 2,
-      paddingRight: 2,
-    },
-  });
 
 interface Props {
   classes: {
@@ -161,4 +123,37 @@ export const SearchField = ({ classes, toggleSearch }: Props) => {
   );
 };
 
-export default withStyles(styles)(SearchField);
+export default withStyles(theme => ({
+  textField: {
+    width: "100%",
+    marginTop: 0,
+  },
+  clearBtn: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    zIndex: 1,
+  },
+  dropdownWrapper: {
+    position: "relative",
+    zIndex: 1,
+  },
+  dropdownInner: {
+    width: "100%",
+    background: "#fff",
+    maxHeight: "calc(100vh - 56px)",
+    overflowY: "scroll",
+  },
+  avatar: {
+    fontSize: 12,
+    marginRight: theme.spacing,
+  },
+  item: {
+    textDecoration: "none",
+  },
+  menuItem: {
+    height: "auto",
+    paddingLeft: 2,
+    paddingRight: 2,
+  },
+}))(SearchField);

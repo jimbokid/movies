@@ -6,40 +6,9 @@ import Typography from "@material-ui/core/Typography";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import YouTube from "react-youtube";
 import { withStyles } from "@material-ui/core/styles";
-import { Theme } from "@material-ui/core/styles/createMuiTheme";
+import { Theme } from "@material-ui/core/styles";
 import { createStyles } from "@material-ui/core";
 import { VideoItem } from "../reducers/movieDetail";
-
-const styles = (theme: Theme) =>
-  createStyles({
-    panelWrapper: {
-      marginBottom: theme.spacing.unit,
-    },
-    videoWrapper: {
-      flexWrap: "wrap",
-    },
-    videoInner: {
-      height: 0,
-      paddingTop: "56%",
-      position: "relative",
-      width: "100%",
-      marginBottom: theme.spacing.unit,
-    },
-    youTubeWrapper: {
-      position: "absolute",
-      top: 0,
-      right: 0,
-      left: 0,
-      bottom: 0,
-      margin: "auto",
-      width: "100%",
-    },
-    media: {
-      height: 0,
-      paddingTop: "150%",
-      background: "#949494",
-    },
-  });
 
 interface Props {
   data: Array<VideoItem>;
@@ -94,4 +63,32 @@ const VideoWrapper: React.FC<Props> = ({
   );
 };
 
-export default withStyles(styles)(VideoWrapper);
+export default withStyles(theme => ({
+  panelWrapper: {
+    marginBottom: theme.spacing,
+  },
+  videoWrapper: {
+    flexWrap: "wrap",
+  },
+  videoInner: {
+    height: 0,
+    paddingTop: "56%",
+    position: "relative",
+    width: "100%",
+    marginBottom: theme.spacing,
+  },
+  youTubeWrapper: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0,
+    margin: "auto",
+    width: "100%",
+  },
+  media: {
+    height: 0,
+    paddingTop: "150%",
+    background: "#949494",
+  },
+}))(VideoWrapper);

@@ -2,7 +2,7 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import grey from "@material-ui/core/colors/grey";
-import { Theme } from "@material-ui/core/styles/createMuiTheme";
+import { Theme } from "@material-ui/core/styles";
 import { createStyles } from "@material-ui/core";
 
 const styles = (theme: Theme) =>
@@ -24,7 +24,7 @@ interface Props {
 const TitleTextComponent: React.FC<Props> = ({ title, text, classes }) => {
   return (
     <>
-      <Typography variant="title" gutterBottom>
+      <Typography variant="h6" gutterBottom>
         {title}
       </Typography>
       {text ? (

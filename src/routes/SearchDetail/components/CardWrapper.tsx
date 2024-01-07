@@ -8,7 +8,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import { withStyles } from "@material-ui/core/styles";
 import grey from "@material-ui/core/colors/grey";
 import { createStyles } from "@material-ui/core";
-import { Theme } from "@material-ui/core/styles/createMuiTheme";
+import { Theme } from "@material-ui/core/styles";
 import { PersonResultsItem, TvResultsItem } from "../reducers/searchDetail";
 
 const styles = (theme: Theme) =>
@@ -16,7 +16,7 @@ const styles = (theme: Theme) =>
     card: {
       display: "flex",
       justifyContent: "space-between",
-      margin: `0 1px ${theme.spacing.unit}px`,
+      margin: `0 1px ${theme.spacing}px`,
     },
     details: {
       display: "flex",
@@ -70,7 +70,7 @@ const CardWrapper: React.FC<Props> = ({
       <div className={classes.details}>
         <CardContent className={classes.content}>
           <Link to={`${linkPath}/${item.id}`} className={classes.item}>
-            <Typography variant="title" gutterBottom>
+            <Typography variant="h6" gutterBottom>
               {item.name}
             </Typography>
           </Link>

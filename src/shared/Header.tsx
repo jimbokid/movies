@@ -6,8 +6,9 @@ import { withStyles } from "@material-ui/core/styles/index";
 import { Link } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import Search from "@material-ui/icons/Search";
+import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
 import { createStyles } from "@material-ui/core";
-import { Theme } from "@material-ui/core/styles/createMuiTheme";
+import { Theme } from "@material-ui/core/styles";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -49,6 +50,12 @@ export const Header = ({ classes, toggleSearch }: Props) => {
             <Link to={`/`} aria-label="home">
               <img src={Logo} alt="" className={classes.logo} />
             </Link>
+
+            <IconButton color="primary" className="searchBtn">
+              <Link to={`/suggestMovie`} aria-label="home">
+                <EmojiPeopleIcon />
+              </Link>
+            </IconButton>
 
             <IconButton
               onClick={toggleSearch}

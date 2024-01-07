@@ -66,7 +66,7 @@ const PersonDetail: React.FC<Props> = ({ classes, match }) => {
           className={classes.bigAvatar}
           src={`https://image.tmdb.org/t/p/w400${data.profile_path}`}
         />
-        <Typography variant="headline" gutterBottom align={"center"}>
+        <Typography variant="h5" gutterBottom align={"center"}>
           {data.name}
         </Typography>
 
@@ -82,7 +82,7 @@ const PersonDetail: React.FC<Props> = ({ classes, match }) => {
 
         <TitleTextComponent title={"Biography:"} text={data.biography} />
 
-        <Typography variant="title" gutterBottom>
+        <Typography variant="h6" gutterBottom>
           Filmography:
         </Typography>
 

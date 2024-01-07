@@ -11,67 +11,7 @@ import LazyLoad from "react-lazyload";
 import { IMAGE_URL } from "../config/constants/appConstants";
 import GridWrapperHOC from "./GridWrapperHOC";
 import GridItemHOC from "./GridItemHOC";
-import { Theme } from "@material-ui/core/styles/createMuiTheme";
-import { createStyles } from "@material-ui/core";
 import { MovieItem } from "../routes/Dashboard/reducers/dashboard";
-
-const styles = (theme: Theme) =>
-  createStyles({
-    cardInner: {
-      padding: `0 ${theme.spacing.unit}px`,
-      display: "block",
-      marginBottom: theme.spacing.unit,
-      cursor: "pointer",
-    },
-    media: {
-      height: 0,
-      paddingTop: "150%",
-      background: "#949494",
-      position: "relative",
-    },
-    cardLayout: {
-      display: "flex",
-      flexDirection: "row",
-      flexWrap: "wrap",
-      width: "100%",
-    },
-    image: {
-      width: "100%",
-      height: "100%",
-      position: "absolute",
-      top: 0,
-      right: 0,
-      left: 0,
-      bottom: 0,
-      margin: "auto",
-    },
-    gridList: {
-      width: "100%",
-      flexWrap: "nowrap",
-      transform: "translateZ(0)",
-    },
-    vote: {
-      position: "absolute",
-      top: theme.spacing.unit,
-      right: theme.spacing.unit,
-      fontSize: 13,
-      backgroundColor: indigo[700],
-    },
-    cover: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      backgroundColor: grey[200],
-    },
-    icon: {
-      position: "absolute",
-      top: 0,
-      right: 0,
-      left: 0,
-      bottom: 0,
-      margin: "auto",
-    },
-  });
 
 export const generateListItem = (
   cast: boolean,
@@ -145,4 +85,59 @@ const MovieList = (props: Props) => {
   );
 };
 
-export default withStyles(styles)(MovieList);
+export default withStyles(theme => ({
+  cardInner: {
+    padding: `0 ${theme.spacing}px`,
+    display: "block",
+    marginBottom: theme.spacing,
+    cursor: "pointer",
+  },
+  media: {
+    height: 0,
+    paddingTop: "150%",
+    background: "#949494",
+    position: "relative",
+  },
+  cardLayout: {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    width: "100%",
+  },
+  image: {
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0,
+    margin: "auto",
+  },
+  gridList: {
+    width: "100%",
+    flexWrap: "nowrap",
+    transform: "translateZ(0)",
+  },
+  vote: {
+    position: "absolute",
+    top: theme.spacing,
+    right: theme.spacing,
+    fontSize: 13,
+    backgroundColor: indigo[700],
+  },
+  cover: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: grey[200],
+  },
+  icon: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0,
+    margin: "auto",
+  },
+}))(MovieList);

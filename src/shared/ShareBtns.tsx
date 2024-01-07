@@ -18,7 +18,7 @@ interface Props {
 const ShareBtns: React.FC<Props> = ({ title }: Props) => {
   return (
     <>
-      <Typography variant="title" gutterBottom>
+      <Typography variant="h6" gutterBottom>
         Share:
       </Typography>
 

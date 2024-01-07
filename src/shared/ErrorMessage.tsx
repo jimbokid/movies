@@ -16,7 +16,7 @@ interface Props {
 export const ErrorMessage: React.FC<Props> = ({ error }: Props) => {
   return (
     <Layout>
-      <Typography variant="title" gutterBottom>
+      <Typography variant="h6" gutterBottom>
         Something goes wrong:
       </Typography>
       <Typography gutterBottom>{error?.message}</Typography>

@@ -3,26 +3,11 @@ import { withStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import Chip from "@material-ui/core/Chip";
 import Typography from "@material-ui/core/Typography";
-import { Theme } from "@material-ui/core/styles/createMuiTheme";
-import { createStyles } from "@material-ui/core";
 import {
   GenreItem,
   Genres,
   KeywordItem,
 } from "../routes/MovieDetail/reducers/movieDetail";
-
-const styles = (theme: Theme) =>
-  createStyles({
-    chip: {
-      marginRight: theme.spacing.unit,
-      marginBottom: theme.spacing.unit,
-      height: 26,
-      cursor: "pointer",
-    },
-    chipWrapper: {
-      textDecoration: "none",
-    },
-  });
 
 interface Props {
   keywords?: Array<KeywordItem>;
@@ -49,7 +34,7 @@ export const GenreList: React.FC<Props> = ({
   const list = title === "Genres" ? dataGenres : keywords;
   return (
     <div className={"genreList"}>
-      <Typography variant="title" gutterBottom>
+      <Typography variant="h6" gutterBottom>
         {title}:
       </Typography>
       {list &&
@@ -79,4 +64,14 @@ export const GenreList: React.FC<Props> = ({
   );
 };
 
-export default withStyles(styles)(GenreList);
+export default withStyles(theme => ({
+  chip: {
+    marginRight: theme.spacing,
+    marginBottom: theme.spacing,
+    height: 26,
+    cursor: "pointer",
+  },
+  chipWrapper: {
+    textDecoration: "none",
+  },
+}))(GenreList);
